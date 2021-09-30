@@ -1,0 +1,50 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <h3 class="mb-2 mt-5">Formulario</h3>
+    <form [formGroup]="form" (keydown.enter)="sendForm()" action="" method="post">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nombre</label>
+        <input formControlName="name" type="text" class="form-control" id="name" aria-describedby="name">
+        <small class="text-danger" *ngIf="form.get('name').hasError('minlength')">
+          <b>Debe tener al menos {{form.get('name').errors.minlength.requiredLength}} caracteres.</b>
+        </small>
+        <small class="text-danger" *ngIf="form.get('name').hasError('maxlength')">
+          <b>Debe tener hasta {{form.get('name').errors.maxlength.requiredLength}} caracteres.</b>
+        </small>
+      </div>
+      <div class="mb-3">
+        <label for="dni" class="form-label">DNI</label>
+        <input formControlName="dni" type="number" class="form-control" id="dni">
+        <small class="text-danger" *ngIf="form.get('dni').hasError('maxlength')">
+          <b>Debe tener hasta {{form.get('dni').errors.maxlength.requiredLength}} caracteres.</b>
+        </small>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input formControlName="email" type="email" class="form-control" id="email">
+        <small class="text-danger" *ngIf="form.get('email').hasError('email')">
+          <b>Se necesita un email valido</b>
+        </small>
+      </div>
+      <div class="mb-3">
+        <label for="phone" class="form-label">Telefono</label>
+        <input formControlName="phone" type="text" class="form-control" id="phone">
+        <small class="text-danger" *ngIf="form.get('phone').hasError('maxlength')">
+          <b>Debe tener hasta {{form.get('phone').errors.maxlength.requiredLength}} caracteres.</b>
+        </small>
+        <small class="text-danger" *ngIf="form.get('phone').hasError('pattern')">
+          <b>Solo puede tener numeros</b>
+        </small>
+      </div>
+      <div class="mb-3">
+        <label for="street" class="form-label">Calle</label>
+        <input formControlName="street" type="text" class="form-control" id="street">
+      </div>
+      <div class="mb-3">
+        <label for="number" class="form-label">Número</label>
+        <input formControlName="number" type="number" class="form-control" id="number">
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" (click)="sendForm()" [disabled]="form.invalid">Enviar</button>
+    </form>
+  </div>
+</div>
