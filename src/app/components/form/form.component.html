@@ -1,5 +1,8 @@
 <div class="row justify-content-center mt-5">
   <div class="col-md-4">
+    <h5 class="mt-5 mb-2">El admin puede añadir nuevos usuarios</h5>
+    <button class="btn btn-success btn-block" [routerLink]="['/home']">Ir a home</button>
+    <button class="btn btn-danger btn-block" (click)="logout()">Cerrar sesión</button>
     <h3 class="mb-2 mt-5">Formulario</h3>
     <form [formGroup]="form" (keydown.enter)="sendForm()" action="" method="post">
       <div class="mb-3">
@@ -48,3 +51,4 @@
     </form>
   </div>
 </div>
+

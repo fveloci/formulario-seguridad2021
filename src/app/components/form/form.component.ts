@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
     this.buildForm();
   }
 
+  // tslint:disable-next-line:typedef
   buildForm(){
     this.form = this.formBuilder.group({
         name: new FormControl('', [
@@ -48,9 +49,26 @@ export class FormComponent implements OnInit {
         ])
     });
   }
-
+  // tslint:disable-next-line:typedef
   sendForm(){
-    console.log('Form: ', this.form.value);
+    const user = {
+      name: this.form.get('name').value,
+      dni: this.form.get('dni').value,
+      contact: {
+        email: this.form.get('email').value,
+        phone: this.form.get('phone').value
+      },
+      address: {
+        street: this.form.get('street').value,
+        number: this.form.get('number').value
+      }
+    }
+    this.formService.saveUserForm(user).subscribe( res => {
+      console.log('Usuario creado correctamente ' + res);
+    }, err => console.log(err));
   }
 
+  logout(){
+    this.formService.logout();
+  }
 }

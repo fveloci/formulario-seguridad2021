@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+  <div class="col-md-4">
+    <h3 class="mb-2 mt-5">Login</h3>
+   <form [formGroup]="form" (keydown.enter)="sendForm()" action="" method="post">
+      <div class="mb-3">
+        <label for="username" class="form-label">Nombre de usuario</label>
+        <input formControlName="username" type="text" class="form-control" id="username" aria-describedby="username">
+        <small class="text-danger" *ngIf="form.get('username').hasError('required')">
+          <b>Este campo es requerido.</b>
+        </small>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <input formControlName="password" type="password" class="form-control" id="password">
+        <small class="text-danger" *ngIf="form.get('password').hasError('required')">
+          <b>Este campo es requerido.</b>
+        </small>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block" (click)="sendForm()" [disabled]="form.invalid">Ingresar</button>
+    </form>
+  </div>
+</div>
+

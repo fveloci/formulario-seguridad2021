@@ -1,0 +1,13 @@
+<div class="row justify-content-center mt-5">
+  <div class="col-md-4">
+    <h3>Home</h3>
+    <ng-container *ngIf="isAdmin">
+      <h5>Sos admin, podes añadir usuarios a la base de datos.</h5>
+      <button class="btn btn-success btn-block" [routerLink]="['/form']">Formulario</button>
+    </ng-container>
+    <ng-container *ngIf="!isAdmin">
+      <h5>Si tu rol es de usuario no puedes hacer nada.</h5>
+    </ng-container>
+    <button class="btn btn-danger btn-block" (click)="logout()">Cerrar sesión</button>
+  </div>
+</div>
